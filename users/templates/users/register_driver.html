@@ -1,0 +1,25 @@
+{% extends "bike/base.html" %}
+
+{% block content %}
+    {{u_form.errors}}
+    {{d_form.errors}}
+    {{up_form.errors}}
+<form action="" method="post">
+    {% csrf_token %}
+    {{u_form.username.label}}
+    {{u_form.username}} <br><br>
+    {{u_form.email.label}}
+    {{u_form.email}} <br><br>
+    {{u_form.password1.label}}
+    {{u_form.password1}} <br><br>
+    {{u_form.password2.label}}
+    {{u_form.password2}} <br><br>
+    <br>
+    {{d_form.as_p}}
+    <br>
+    {{up_form.as_p}}
+    <button type="submit">submit</button>
+</form>
+
+
+{% endblock %}

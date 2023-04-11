@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'bike/assets/css/main.css' %}" />
+    <noscript><link rel="stylesheet" href="{% static 'bike/assets/css/fontawesome-all.min copy.css' %}" /></noscript>
+    <link rel="stylesheet" href="{% static 'bike/assets/css/nav.css' %}" />
+    <title>Speedo</title>
+</head>
+<body>
+    <!-- banner -->
+
+    <section class="panel"  style="width:100%;">
+        <div class="content color0" style="width:100%;height: fit-content;min-height: 100%;">
+
+            <nav class="navbar">                
+               
+                    
+                    <div class="nav-items">
+
+                        <div class="nav-div">
+                            <h3>Speedo</h3>
+                        </div>
+        
+                        <ul class="nav-div">
+                            <li class="nav-item">
+                                <a class="" href="#section_1">Home</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="" href="#section_2">About</a>
+                            </li>
+                        
+
+                            {% if request.user.is_authenticated %}
+                        
+                            <li>
+                                <a class="button primary color2" href="{% url 'logout'%}">Logout</a>
+                            </li>
+                            {%else%}
+                                <li> 
+                                    <a class="button primary color1" href="{% url 'signup' %}">Sign up</a>
+                                </li>
+                                <li>
+                                    <a class="button primary color2" href="{% url 'login' %}">log in</a>
+                                </li>
+                            {%endif%}
+                            
+                        </ul>
+                    </div>
+                
+            </nav>
+            <hr style="margin: 0;">
+            {% if messages %}
+                {% for message in messages %}
+                    <!-- <div class="alert">
+
+                    </div> -->
+                {% endfor %}
+            {% endif %}
+            <div style="padding: 0% 10%;">
+            {% block content %}
+
+            {% endblock %}
+            </div>
+            
+        </div>
+    </section>
+</body>
+</html>
